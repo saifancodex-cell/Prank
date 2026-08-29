@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Video</title>
+<style>
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#000;font-family:Arial,sans-serif}
+#startScreen{position:fixed;inset:0;background:#000;display:flex;justify-content:center;align-items:center;z-index:10}
+#startButton{padding:16px 35px;font-size:24px;border:0;border-radius:10px;cursor:pointer}
+#video{width:100vw;height:100vh;object-fit:contain;background:#000;display:none}
+#finalScreen{position:fixed;inset:0;background:#fff;display:none;justify-content:center;align-items:center;color:#000;text-align:center}
+#message{font-size:32px}
+</style>
+</head>
+<body>
+<div id="startScreen"><button id="startButton">Start</button></div>
+<video id="video" preload="auto">
+<source src="rickroll.mp4" type="video/mp4">
+Your browser does not support video.
+</video>
+<div id="finalScreen"><div id="message">I will not hack your old chromebook</div></div>
+<script>
+const startScreen=document.getElementById("startScreen");
+const startButton=document.getElementById("startButton");
+const video=document.getElementById("video");
+const finalScreen=document.getElementById("finalScreen");
+
+startButton.addEventListener("click",async()=>{
+  startScreen.style.display="none";
+  video.style.display="block";
+  try{await document.documentElement.requestFullscreen()}catch(e){}
+  try{await video.play()}catch(e){console.log(e)}
+});
+
+video.addEventListener("ended",async()=>{
+  video.style.display="none";
+  finalScreen.style.display="flex";
+  try{
+    if(!document.fullscreenElement) await document.documentElement.requestFullscreen();
+  }catch(e){}
+});
+</script>
+</body>
+</html>
