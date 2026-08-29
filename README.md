@@ -7,3 +7,5 @@ Step-3  : Go to the folder and open the "index(3).html" for the code prank webpa
 *Online Method-
 Step- Just click on the link give, It will work offline too.
 Link   : (https://giveaway00.netlify.app)
+
+Now you can send the prank to a friend for it to work and serve it's purpose!!!!!!!!!!!!!
